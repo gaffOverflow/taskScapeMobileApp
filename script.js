@@ -22,15 +22,34 @@ function run() {
   const database = getDatabase(app);
   const movieInDB = ref(database, "movies");
 }
+// run()
 
 // assign variables to html elements required for javascript
 const input = document.querySelector("input");
 const button = document.querySelector("#button");
+const taskContainer = document.querySelector(".taskContainer");
 
 // write a function to get whatever text in input field
 button.addEventListener("click", () => {
   // console.log(input.value) ==> run to confirm it's working
-  let inputText = input.value
+  let inputText = input.value;
+
   // callback function from firebase DB to push whatever text in input field
-  push(movieInDB, inputText)
+  // push(movieInDB, inputText);
+
+  appendList(inputText);
+
+  clearInputField();
 });
+
+// write a function to clear input field
+function clearInputField() {
+  // set input field content to empty string
+  input.value = "";
+}
+
+// write a function to create new list element
+function appendList(Text) {
+  // create <li></li> everytime "add to Cart" is clicked and extract anytext in input field to the list element
+  taskContainer.innerHTML += `<li>${Text}</li>`;
+}
