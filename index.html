@@ -16,10 +16,10 @@
     />
   </head>
   <body class="bg-bodyBg">
-    <main class="text-center py-10">
+    <main class="flex flex-col justify-center items-center py-10">
       <h1 class="font-rubik text-3xl font-semibold py-10">Challenge</h1>
       <div
-        class="flex flex-col items-center gap-4 border-2 border-slate-500 mx-6 p-6 rounded-lg bg-zinc-400"
+        class="flex flex-col items-center gap-4 border-2 border-slate-500 p-6 rounded-lg bg-zinc-400"
       >
         <iconify-icon
           icon="noto-v1:panda"
@@ -29,17 +29,19 @@
         <input
           type="text"
           placeholder="Bread"
-          class="rounded-md w-56 bg-inputBg text-inputColor py-3 px-2 text-center"
+          class="rounded-md w-64 bg-inputBg text-inputColor py-3 px-2 text-center"
         />
         <button
           id="button"
-          class="font-rubik bg-btnBg text-btnColor w-56 py-3 rounded-md"
+          class="font-rubik bg-btnBg text-btnColor w-64 py-3 rounded-md"
         >
           Add to cart
         </button>
       </div>
-      <ul class="taskContainer">
-        <!-- <li>fish</li>
+      <ul
+        class="taskContainer flex flex-row flex-wrap gap-3 py-5 justify-center"
+      >
+        <!-- <li class="">fish</li>
         <li>fish</li> -->
       </ul>
     </main>

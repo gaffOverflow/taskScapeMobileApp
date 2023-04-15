@@ -33,9 +33,11 @@ const taskContainer = document.querySelector(".taskContainer");
 // line 4 - callback function to clear whatever text in input field
 button.addEventListener("click", () => {
   let inputText = input.value;
-  push(listInDB, inputText);
+  if (inputText != "") {
+    push(listInDB, inputText);
 
-  clearInputField();
+    clearInputField();
+  }
 });
 
 // line 1 - extract list in database with the onValue function
@@ -68,5 +70,5 @@ function clearInputField() {
 // write a function to create new list element
 function appendList(Text) {
   // create <li></li> everytime "add to Cart" is clicked and extract anytext in input field to the list element
-  taskContainer.innerHTML += `<li>${Text}</li>`;
+  taskContainer.innerHTML += `<li class="li">${Text}</li>`;
 }
