@@ -43,15 +43,20 @@ button.addEventListener("click", () => {
 // line 1 - extract list in database with the onValue function
 // run    - console.log(snapshot.val())===> test run
 // line 3 - callback function to clear whatever text in itemList to prevent       duplicate item
-// line 4 - ittirate over the listItem extracted from database
+// line 4 - ittirate over the listItem entries extracted from database
 // run    - console.log(listItem[i])===>test run
-// line 6 - callback function from to push whatever text in input field to to listItem
+// line 5 - assign list item to a variable
+// line 6 - extract itemKeys form listItem
+// line 7 - extract itemValues form listItem
+// line 8 - callback function from to push whatever text in input field to to listItem
 onValue(listInDB, function (snapshot) {
-  let listItem = Object.values(snapshot.val());
+  let listItem = Object.entries(snapshot.val());
   clearListItem();
   for (let i = 0; i < listItem.length; i++) {
     let currentList = listItem[i];
-    appendList(currentList);
+    let itemKeys = currentList[0]
+    let itemValues = currentList[1]
+    appendList(itemValues);
   }
 });
 
@@ -61,14 +66,17 @@ function clearListItem() {
   taskContainer.innerHTML = "";
 }
 
-//line 1 - write a function to clear input field
-//line 2 - set input field content to empty string
+// line 1 - write a function to clear input field
+// line 2 - set input field content to empty string
 function clearInputField() {
   input.value = "";
 }
 
-// write a function to create new list element
+// line 1 - write a function to create new list element
+// line 2 - create <li></li> everytime "add to Cart" is clicked and extract anytext in input field to the list element
 function appendList(Text) {
-  // create <li></li> everytime "add to Cart" is clicked and extract anytext in input field to the list element
-  taskContainer.innerHTML += `<li class="li">${Text}</li>`;
+  const li = document.createElement("li");
+  li.classList.add("li");
+  li.textContent = `${Text}`;
+  taskContainer.appendChild(li);
 }
