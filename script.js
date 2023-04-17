@@ -1,5 +1,4 @@
 // import informations
-
 import { initializeApp } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-app.js";
 
 import {
@@ -7,6 +6,7 @@ import {
   ref,
   push,
   onValue,
+  remove,
 } from "https://www.gstatic.com/firebasejs/9.15.0/firebase-database.js";
 
 // fetch database URL and save it in an object variable
@@ -17,6 +17,7 @@ const appSettings = {
 // line 1 - initialize app to link firebase database and our project
 // run    - console.log(app) ==> test run to confirm firebase database is connected
 // line 2 - connect project to database with imported function
+
 const app = initializeApp(appSettings);
 const database = getDatabase(app);
 const listInDB = ref(database, "list");
@@ -49,14 +50,34 @@ button.addEventListener("click", () => {
 // line 6 - extract itemKeys form listItem
 // line 7 - extract itemValues form listItem
 // line 8 - callback function from to push whatever text in input field to to listItem
+
 onValue(listInDB, function (snapshot) {
-  let listItem = Object.entries(snapshot.val());
-  clearListItem();
-  for (let i = 0; i < listItem.length; i++) {
-    let currentList = listItem[i];
-    let itemKeys = currentList[0]
-    let itemValues = currentList[1]
-    appendList(itemValues);
+  if (snapshot.exists()) {
+    let listItem = Object.entries(snapshot.val());
+    clearListItem();
+    for (let i = 0; i < listItem.length; i++) {
+      let currentList = listItem[i];
+      let itemKeys = currentList[0];
+      let itemValues = currentList[1];
+      appendList(itemValues);
+
+      // line 1 - write a function to create new list element
+      // line 2 - create <li></li> everytime "add to Cart" is clicked and extract anytext in input field to the list element
+      function appendList(Text) {
+        const li = document.createElement("li");
+        li.classList.add("li");
+        li.textContent = `${Text}`;
+        taskContainer.appendChild(li);
+
+        li.addEventListener("click", function () {
+          // console.log(itemKeys);
+          let listIdlocation = ref(database, `list/${itemKeys}`);
+          remove(listIdlocation);
+        });
+      }
+    }
+  } else {
+    taskContainer.textContent = "no list available";
   }
 });
 
@@ -70,13 +91,4 @@ function clearListItem() {
 // line 2 - set input field content to empty string
 function clearInputField() {
   input.value = "";
-}
-
-// line 1 - write a function to create new list element
-// line 2 - create <li></li> everytime "add to Cart" is clicked and extract anytext in input field to the list element
-function appendList(Text) {
-  const li = document.createElement("li");
-  li.classList.add("li");
-  li.textContent = `${Text}`;
-  taskContainer.appendChild(li);
 }
