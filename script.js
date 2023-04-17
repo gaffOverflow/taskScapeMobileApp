@@ -43,13 +43,15 @@ button.addEventListener("click", () => {
 
 // line 1 - extract list in database with the onValue function
 // run    - console.log(snapshot.val())===> test run
-// line 3 - callback function to clear whatever text in itemList to prevent       duplicate item
-// line 4 - ittirate over the listItem entries extracted from database
+// line 2 - write conditional statement to delete the last snapshot from database
+// line 3 - convert object to arrays
+// line 4 - callback function to clear whatever text in itemList to prevent       duplicate item
+// line 5 - ittirate over the listItem entries extracted from database
 // run    - console.log(listItem[i])===>test run
-// line 5 - assign list item to a variable
-// line 6 - extract itemKeys form listItem
-// line 7 - extract itemValues form listItem
-// line 8 - callback function from to push whatever text in input field to to listItem
+// line 6 - assign list item to a variable
+// line 7 - extract itemKeys form listItem
+// line 8 - extract itemValues form listItem
+// line 9 - callback function from to push whatever text in input field to to listItem
 
 onValue(listInDB, function (snapshot) {
   if (snapshot.exists()) {
