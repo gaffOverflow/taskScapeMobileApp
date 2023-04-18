@@ -71,7 +71,12 @@ onValue(listInDB, function (snapshot) {
         li.textContent = `${Text}`;
         taskContainer.appendChild(li);
 
-        li.addEventListener("click", function () {
+        const cancel = document.createElement("button")
+        cancel.classList.add("cancel");
+        cancel.innerHTML = `<iconify-icon icon="iconoir:cancel"></iconify-icon>`
+        li.appendChild(cancel);
+
+        cancel.addEventListener("click", function () {
           // console.log(itemKeys);
           let listIdlocation = ref(database, `list/${itemKeys}`);
           remove(listIdlocation);

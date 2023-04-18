@@ -7,9 +7,9 @@ Task Scape is a simple JavaScript project that functions like a to-do list, but 
 To use Task Scape, simply download or clone the repository to your local machine. Then, open the index.html file in your web browser to access the application.
 
 ## Usage
-1. Task Scape is very easy to use. Once you've opened the application, you can start adding tasks to the list. To add a task, simply type it in the input field at the top of the page and press "Add to Cart". The new task will be added to the list.
+1. Task Scape is very easy to use. Once you've opened the application, you can start adding tasks to the list. To add a task, simply type it in the input field at the top of the page and press "Add to Task". The new task will be added to the list.
 
-2. To remove a task, simply click on the on the task. This will remove the task from the list.
+2. To remove a task, simply click on the "X" icon on the task. This will remove the task from the list.
 
 ## Collaborative Features
 Task Scape has several collaborative features that allow multiple users to make changes to the list in real-time. Anyone with the link can add, or remove tasks from the list, and these changes will be immediately reflected in the application for all users.
